@@ -11,6 +11,22 @@ def encode(original):
         code += str(new)
     return code
 
+def decode(code):
+    originalPass = ""
+    decodedNum = 0
+
+    for x in code: 
+        decodedNum = (int(x) - 3)
+        if decodedNum < 0:
+            decodedNum = ((int(x) + 10) - 3)
+            # if the decoded number is less than 1, it means that, when encoded, the original number was two digits
+            # we need to combat this by turning it back into its two digit form, and then subtracting 3 to get the original number in the password
+            originalPass += str(decodedNum)
+        else:
+            originalPass += str(decodedNum)
+    
+    return originalPass
+
 
 def output_menu():
     print('Menu')
@@ -33,7 +49,7 @@ def main():
             code = encode(pw)
             print('Your password has been encoded and stored!\n')
         elif option == 2:
-            print(f'The encoded password is {code}, and the original password is {pw}.')
+            print(f'The encoded password is {code}, and the original password is {decode(code)}.\n')
         else:
             cont = False
 
