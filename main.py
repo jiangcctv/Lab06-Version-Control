@@ -4,8 +4,10 @@ Author: Cindy Jiang
 
 def encode(original):
     code = ''
+    # decodes by adding three to each int
     for i in range(len(original)):
         new = int(original[i]) + 3
+        # checks if int is within range, else gets only the ones digit
         if new >= 10:
             new = new % 10
         code += str(new)
