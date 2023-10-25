@@ -1,7 +1,13 @@
+"""
+Author: Cindy Jiang
+"""
+
 def encode(original):
     code = ''
     for i in range(len(original)):
         new = int(original[i]) + 3
+        if new >= 10:
+            new = new % 10
         code += str(new)
     return code
 
